@@ -1,3 +1,5 @@
+import { Graph } from "./components";
+
 function App() {
   return (
     <div className="container text-center drop-shadow-lg text-grey-800">
@@ -6,7 +8,9 @@ function App() {
       </h1>
 
       {/* GRID COLUMNS */}
-      <div className="grid md:grid-cols-2 gap-4"></div>
+      <div className="grid md:grid-cols-2 gap-4">
+        <Graph />
+      </div>
     </div>
   );
 }
