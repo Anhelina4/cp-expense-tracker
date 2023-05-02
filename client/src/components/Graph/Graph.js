@@ -29,7 +29,7 @@ const Graph = () => {
   };
 
   return (
-    <div className="flex justify-content max-x-xs mx-auto">
+    <div className="flex justify-content">
       <div classNme="item">
         <div className="chart relative">
           <Doughnut {...config}></Doughnut>
@@ -39,7 +39,7 @@ const Graph = () => {
           </h3>
         </div>
       </div>
-      <div className="flex flex-col py-10 gap-4"></div>
+      {/* <div className="flex flex-col py-10 gap-4"></div> */}
     </div>
   );
 };
