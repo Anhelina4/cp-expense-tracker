@@ -1,4 +1,4 @@
-import { Graph } from "./components";
+import { Form, Graph } from "./components";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         {/* GRID COLUMNS */}
         <div className="flex justify-center">
           <Graph />
+          <Form />
         </div>
       </div>
     </div>
