@@ -9,7 +9,7 @@ function App() {
         </h1>
 
         {/* GRID COLUMNS */}
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-48">
           <Graph />
           <Form />
         </div>

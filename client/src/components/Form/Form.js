@@ -1,6 +1,6 @@
+import { List } from "../../components";
 import React from "react";
 import { useForm } from "react-hook-form";
-
 const Form = () => {
   const { register, handleSubmit, resetField } = useForm();
 
@@ -9,7 +9,7 @@ const Form = () => {
   };
 
   return (
-    <div className="form max-w-sm mx-auto w-96">
+    <div className="form w-96">
       {/* title */}
       <h1 className="font-bold pb-4 text-xl">Transaction</h1>
       {/* form */}
@@ -42,6 +42,7 @@ const Form = () => {
           </div>
         </div>
       </form>
+      <List />
     </div>
   );
 };
