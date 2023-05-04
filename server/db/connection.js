@@ -9,7 +9,7 @@ const connection = mongoose
     return db;
   })
   .catch((err) => {
-    console.log("Connection error");
+    console.log("Connection error", err);
   });
 
 module.exports = connection;

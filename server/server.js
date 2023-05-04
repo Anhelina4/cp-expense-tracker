@@ -9,7 +9,7 @@ const cors = require("cors");
 require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 3000;
 
-// use middleware(cors in this case)
+// use middleware(cors to control access depending on its origin in this case)
 app.use(cors());
 app.use(express.json());
 
@@ -29,7 +29,7 @@ connection
     });
 
     app.on("error", (err) =>
-      console.timeLog("Failed to Connect with HTTP server", err)
+      console.log("Failed to Connect with HTTP server", err)
     );
   })
   //   error in mongodb connection
