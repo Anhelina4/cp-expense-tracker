@@ -13,10 +13,24 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// mongoDB connection
+const connection = require("./db/connection");
+
 // using routes
 app.use(require("./routes/route"));
 
-// listen changes on port
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+connection
+  .then((db) => {
+    if (!db) return process.exit(1);
+
+    // listen to http server on port only when we have valid connection to DB
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`);
+    });
+
+    app.on("error", (err) =>
+      console.timeLog("Failed to Connect with HTTP server", err)
+    );
+  })
+  //   error in mongodb connection
+  .catch((err) => console.log("Failed to Connect with MongoDB", err));
