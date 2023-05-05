@@ -5,7 +5,7 @@ const controller = require("../controller/controller");
 // endpoint categories with get request
 routes
   .route("/api/categories")
-  // inside get there is a handler fn
-  .get(controller.createCategories);
+  // inside post there is a handler fn
+  .post(controller.createCategories);
 
 module.exports = routes;
