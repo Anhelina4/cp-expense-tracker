@@ -6,6 +6,13 @@ const controller = require("../controller/controller");
 routes
   .route("/api/categories")
   // inside post there is a handler fn
-  .post(controller.createCategories);
+  .post(controller.createCategories)
+  // inside get there is a handler fn
+  .get(controller.getCategories);
+
+routes
+  .route("/api/transaction")
+  .post(controller.createTransaction)
+  .get(controller.getTransaction);
 
 module.exports = routes;
