@@ -13,6 +13,9 @@ routes
 routes
   .route("/api/transaction")
   .post(controller.createTransaction)
-  .get(controller.getTransaction);
+  .get(controller.getTransaction)
+  .delete(controller.deleteTransaction);
+
+routes.route("/api/labels").get(controller.getLabels);
 
 module.exports = routes;
