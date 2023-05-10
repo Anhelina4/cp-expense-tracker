@@ -1,4 +1,5 @@
 import React from "react";
+import apiSlice from "../../store/apiSlice";
 
 const config = [
   { label: "Savings", value: 30, color: "var(--color-blue)" },
@@ -7,6 +8,9 @@ const config = [
 ];
 
 export const Labels = () => {
+  // we specified getCategories fn, but RTK query adds 'use' and 'query' to the name of the fn
+  const { data, isFetching, isSuccess } = apiSlice.useGetCategoriesQuery();
+
   return config?.map((item) => <Label data={item} />);
 };
 
