@@ -66,7 +66,7 @@ async function deleteTransaction(req, res) {
 
 // controller to get request: http://localhost:8080/api/labels - this is an endpoint
 async function getLabels(req, res) {
-  const aggregate = await model.Transactions.aggregate([
+  await model.Transactions.aggregate([
     {
       $lookup: {
         // collection we want to join with
@@ -98,7 +98,7 @@ async function getLabels(req, res) {
       );
       res.json(data);
     })
-    .catch((err) => res.status(400).json("Lookup Collection Error"));
+    .catch((err) => res.status(400).json("Lookup Collection Error" + err));
 }
 
 module.exports = {
