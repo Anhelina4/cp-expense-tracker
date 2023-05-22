@@ -1,29 +1,32 @@
 import React from "react";
 import apiSlice from "../../store/apiSlice";
 
-const config = [
-  { label: "Savings", value: 30, color: "var(--color-blue)" },
-  { label: "Investment", value: 60, color: "var(--color-yellow)" },
-  { label: "Expense", value: 10, color: "var(--color-pink)" },
-];
-
 export const Labels = () => {
   // we specified getCategories fn, but RTK query adds 'use' and 'query' to the name of the fn
-  const { data, isFetching, isSuccess } = apiSlice.useGetCategoriesQuery();
+  const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery();
 
-  return config?.map((item) => <Label data={item} />);
+  let result;
+  if (isFetching) {
+    result = <div>Fetching...</div>;
+  } else if (isSuccess) {
+    result = data?.map((item, index) => <Label key={index} data={item} />);
+  } else if (isError) {
+    result = <div>Error</div>;
+  }
+
+  return <>{result}</>;
 };
 
 export const Label = (props) => {
   const { data } = props;
-
+  console.log("data", data);
   return data ? (
     <div className="labels flex justify-between mb-3">
       <div className="flex">
         <div
           className="w-2 h-2 rounded py-3  mr-1"
           style={{ background: data?.color }}></div>
-        <h3>{data?.label || ""}</h3>
+        <h3>{data?.name || ""}</h3>
       </div>
       <div className="font-bold">{data?.value || 0}%</div>
     </div>

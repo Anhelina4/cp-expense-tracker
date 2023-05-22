@@ -1,20 +1,26 @@
 import "boxicons";
 
 import React from "react";
-
-const config = [
-  { label: "Savings", value: 30, color: "var(--color-blue)" },
-  { label: "Investment", value: 60, color: "var(--color-yellow)" },
-  { label: "Expense", value: 10, color: "var(--color-pink)" },
-];
+import apiSlice from "../../store/apiSlice";
 
 const List = () => {
+  const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery();
+
+  let result;
+  if (isFetching) {
+    result = <div>Fetching...</div>;
+  } else if (isSuccess) {
+    result = data?.map((item, index) => (
+      <Transaction key={index} category={item} />
+    ));
+  } else if (isError) {
+    result = <div>Error</div>;
+  }
+
   return (
     <div className="flex flex-col py-6 gap-3">
       <h1 className="py-4 text-empty font-bold text-xl">History</h1>
-      {config?.map((item) => (
-        <Transaction category={item} />
-      ))}
+      {result}
     </div>
   );
 };
@@ -31,7 +37,7 @@ const Transaction = (props) => {
       <button className="">
         <box-icon name="trash" size="16px"></box-icon>
       </button>
-      <span className="block w-full">{category?.label || ""}</span>
+      <span className="block w-full">{category?.name || ""}</span>
     </div>
   ) : null;
 };
