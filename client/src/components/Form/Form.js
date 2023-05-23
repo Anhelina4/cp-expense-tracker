@@ -1,12 +1,16 @@
 import { List } from "../../components";
 import React from "react";
+import { default as api } from "../../store/apiSlice";
 import { useForm } from "react-hook-form";
-
 const Form = () => {
   const { register, handleSubmit, resetField } = useForm();
-
-  const onSubmit = (values) => {
+  const [addTransaction] = api.useAddTransactionMutation();
+  const onSubmit = async (values) => {
     console.log("values", values);
+    if (!values) return {};
+    await addTransaction(values).unwrap();
+    resetField("name");
+    resetField("amount");
   };
 
   return (

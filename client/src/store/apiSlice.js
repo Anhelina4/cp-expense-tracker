@@ -8,9 +8,15 @@ export const apiSlice = createApi({
   //   specify endpoints. Builder is used to build a query
   endpoints: (builder) => ({
     // get request all categories for this endpoint
-    getCategories: builder.query({ query: () => "/api/categories" }),
+    getCategories: builder.query({
+      query: () => "/api/categories",
+      providesTags: ["categories"],
+    }),
     // get request for Labels
-    getLabels: builder.query({ query: () => "/api/labels" }),
+    getLabels: builder.query({
+      query: () => "/api/labels",
+      providesTags: ["transaction"],
+    }),
 
     // post request for Transaction
     addTransaction: builder.mutation({
@@ -19,15 +25,17 @@ export const apiSlice = createApi({
         method: "POST",
         body: initialData,
       }),
+      invalidatesTags: ["transaction"],
     }),
 
     // delete request for Transaction
     deleteTransaction: builder.mutation({
-      query: (id) => ({
+      query: (_id) => ({
         url: "/api/transaction",
         method: "DELETE",
-        body: id,
+        body: _id,
       }),
+      invalidatesTags: ["transaction"],
     }),
   }),
 });
