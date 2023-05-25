@@ -6,7 +6,6 @@ const Form = () => {
   const { register, handleSubmit, resetField } = useForm();
   const [addTransaction] = api.useAddTransactionMutation();
   const onSubmit = async (values) => {
-    console.log("values", values);
     if (!values) return {};
     await addTransaction(values).unwrap();
     resetField("name");
