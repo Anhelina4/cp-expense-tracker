@@ -13,11 +13,14 @@ const Form = () => {
   };
 
   return (
-    <div className="form w-96">
-      {/* title */}
-      <h1 className="font-bold pb-4 text-xl">Transaction</h1>
+    <div className="form w-96 ">
       {/* form */}
-      <form id="transaction-form" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="pr-3"
+        id="transaction-form"
+        onSubmit={handleSubmit(onSubmit)}>
+        {/* title */}
+        <h1 className="font-bold pb-4 text-xl">Transaction</h1>
         <div className="grid gap-4">
           <div className="input-group">
             <input

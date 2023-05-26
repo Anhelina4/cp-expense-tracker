@@ -24,7 +24,9 @@ const History = () => {
   return (
     <div className="flex flex-col py-6 gap-3">
       <h1 className="py-4 text-empty font-bold text-xl">History</h1>
-      {result}
+      <div className="h-96		overflow-y-scroll flex flex-col gap-3 pr-3">
+        {result}
+      </div>
     </div>
   );
 };
