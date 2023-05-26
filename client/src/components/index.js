@@ -1,4 +1,5 @@
 export { default as Graph } from "./Graph";
-export { Labels } from "./Labels";
+export { default as Stats } from "./Stats";
 export { default as Form } from "./Form";
-export { default as List } from "./List";
+export { default as History } from "./History";
+export { default as Transaction } from "./Transaction";

@@ -1,7 +1,7 @@
 import _ from "lodash";
-import { getSum } from "../helpers";
+import { getSum } from ".";
 
-const getLabelPercentage = (transaction) => {
+const getStatsPercentage = (transaction) => {
   const categorySum = getSum(transaction, true);
 
   const totalSum = _.sum(getSum(transaction));
@@ -15,4 +15,4 @@ const getLabelPercentage = (transaction) => {
   return percent;
 };
 
-export default getLabelPercentage;
+export default getStatsPercentage;

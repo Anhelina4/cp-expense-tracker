@@ -2,15 +2,15 @@ import { ArcElement, Chart } from "chart.js";
 import { getChartData, getTotal } from "../../helpers";
 
 import { Doughnut } from "react-chartjs-2";
-import { Labels } from "../../components";
 import React from "react";
+import { Stats } from "../../components";
 import apiSlice from "../../store/apiSlice";
 
 Chart.register(ArcElement);
 
 const Graph = () => {
   // we specified getCategories fn, but RTK query adds 'use' and 'query' to the name of the fn
-  const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery();
+  const { data, isFetching, isSuccess, isError } = apiSlice.useGetStatsQuery();
 
   let result;
   let total;
@@ -35,7 +35,7 @@ const Graph = () => {
         </div>
       </div>
       <div className="py-10 gap-4">
-        <Labels />
+        <Stats />
       </div>
     </div>
   );

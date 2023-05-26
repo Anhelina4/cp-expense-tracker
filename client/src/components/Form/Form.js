@@ -1,4 +1,4 @@
-import { List } from "../../components";
+import { History } from "../../components";
 import React from "react";
 import { default as api } from "../../store/apiSlice";
 import { useForm } from "react-hook-form";
@@ -46,7 +46,7 @@ const Form = () => {
           </div>
         </div>
       </form>
-      <List />
+      <History />
     </div>
   );
 };

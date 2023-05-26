@@ -64,8 +64,8 @@ async function deleteTransaction(req, res) {
     .catch((err) => res.json(`Error while deleting transaction record ${err}`));
 }
 
-// controller to get request: http://localhost:8080/api/labels - this is an endpoint
-async function getLabels(req, res) {
+// controller to get request: http://localhost:8080/api/Stats - this is an endpoint
+async function getStats(req, res) {
   await model.Transactions.aggregate([
     {
       $lookup: {
@@ -107,5 +107,5 @@ module.exports = {
   createTransaction,
   getTransaction,
   deleteTransaction,
-  getLabels,
+  getStats,
 };
