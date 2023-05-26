@@ -1,42 +1,36 @@
 import { ArcElement, Chart } from "chart.js";
+import { getChartData, getTotal } from "../../helpers";
 
 import { Doughnut } from "react-chartjs-2";
 import { Labels } from "../../components";
 import React from "react";
+import apiSlice from "../../store/apiSlice";
 
 Chart.register(ArcElement);
 
 const Graph = () => {
-  const config = {
-    data: {
-      datasets: [
-        {
-          label: "My First Dataset",
-          data: [300, 50, 100],
-          backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(54, 162, 235)",
-            "rgb(255, 205, 86)",
-          ],
-          hoverOffset: 4,
-          borderRadius: 30,
-          spacing: 8,
-        },
-      ],
-    },
-    options: {
-      cutout: 115,
-    },
-  };
+  // we specified getCategories fn, but RTK query adds 'use' and 'query' to the name of the fn
+  const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery();
+
+  let result;
+  let total;
+  if (isFetching) {
+    result = <div>Fetching...</div>;
+  } else if (isSuccess) {
+    result = <Doughnut {...getChartData(data)}></Doughnut>;
+    total = getTotal(data);
+  } else if (isError) {
+    result = <div>Error</div>;
+  }
 
   return (
     <div className="flex flex-col">
       <div classNme="item">
         <div className="chart relative">
-          <Doughnut {...config}></Doughnut>
+          {result}
           <h3 className="mb-4 font-bold title">
             <span className="block">Total</span>
-            <span className="block text-3xl text-emerald-400">${0}</span>
+            <span className="block text-3xl text-emerald-400">${total}</span>
           </h3>
         </div>
       </div>

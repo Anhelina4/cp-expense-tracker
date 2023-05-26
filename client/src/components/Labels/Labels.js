@@ -1,6 +1,7 @@
 import React from "react";
 import apiSlice from "../../store/apiSlice";
 import { getLabelPercentage } from "../../helpers";
+
 export const Labels = () => {
   // we specified getCategories fn, but RTK query adds 'use' and 'query' to the name of the fn
   const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery();
@@ -9,7 +10,6 @@ export const Labels = () => {
   if (isFetching) {
     result = <div>Fetching...</div>;
   } else if (isSuccess) {
-    console.log("data", data);
     result = getLabelPercentage(data)?.map((item, index) => (
       <Label key={index} data={item} />
     ));
