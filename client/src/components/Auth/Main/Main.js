@@ -15,9 +15,7 @@ const Main = () => {
   return (
     <div className={styles.main_container}>
       <nav className={styles.navbar}>
-        <h1 className="text-4xl py-8 mb-10 text-white rounded">
-          Expense tracker
-        </h1>
+        <h1 className="text-4xl  text-white rounded">Expense tracker</h1>
         <button className={styles.white_btn} onClick={handleLogout}>
           Logout
         </button>
