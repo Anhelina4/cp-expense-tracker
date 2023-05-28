@@ -9,16 +9,17 @@ import apiSlice from "../../store/apiSlice";
 Chart.register(ArcElement);
 
 const Graph = () => {
+  const userId = localStorage.getItem("userId");
   // we specified getCategories fn, but RTK query adds 'use' and 'query' to the name of the fn
   const { data, isFetching, isSuccess, isError } = apiSlice.useGetStatsQuery();
-
+  const userRelatedData = data?.filter((item) => item?.userId === userId);
   let result;
   let total;
   if (isFetching) {
     result = <div>Fetching...</div>;
   } else if (isSuccess) {
-    result = <Doughnut {...getChartData(data)}></Doughnut>;
-    total = getTotal(data);
+    result = <Doughnut {...getChartData(userRelatedData)}></Doughnut>;
+    total = getTotal(userRelatedData);
   } else if (isError) {
     result = <div>Error</div>;
   }

@@ -4,6 +4,8 @@ const express = require("express");
 // initialize app as express app(instance of express app)
 const app = express();
 const cors = require("cors");
+const userRoutes = require("./routes/users");
+const authRoutes = require("./routes/auth");
 
 // dotenv and config.env - for secret app info configuration data
 require("dotenv").config({ path: "./config.env" });
@@ -18,6 +20,8 @@ const connection = require("./db/connection");
 
 // using routes
 app.use(require("./routes/route"));
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 connection
   .then((db) => {

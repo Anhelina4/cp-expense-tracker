@@ -1,20 +1,26 @@
-import { Form, Graph } from "./components";
+import { Login, Main, SignUp } from "./components/Auth";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 
 function App() {
+  const user = localStorage.getItem("token");
+  console.log("user", user);
   return (
-    <div className="flex justify-center bg-gray-100	w-screen h-screen">
-      <div className="container text-center">
-        <h1 className="text-4xl py-8 mb-10 bg-slate-800 text-white rounded">
-          Expense tracker
-        </h1>
-
-        {/* GRID COLUMNS */}
-        <div className="flex justify-center gap-48">
-          <Graph />
-          <Form />
-        </div>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        {user && <Route path="/" exact element={<Main />}></Route>}
+        <Route path="/signup" exact element={<SignUp />}></Route>
+        <Route path="/login" exact element={<Login />}></Route>
+        <Route
+          path="/"
+          exact
+          element={<Navigate replace to="/login" />}></Route>
+      </Routes>
+    </Router>
   );
 }
 

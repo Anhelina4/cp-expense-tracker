@@ -5,8 +5,12 @@ import { Transaction } from "..";
 import apiSlice from "../../store/apiSlice";
 
 const History = () => {
+  const userId = localStorage.getItem("userId");
   const { data, isFetching, isSuccess, isError } = apiSlice.useGetStatsQuery();
+  const userRelatedData = data?.filter((item) => item?.userId === userId);
+
   const [deleteTransaction] = apiSlice.useDeleteTransactionMutation();
+
   const handleDelete = (e) => {
     if (!e.target.dataset.id) return 0;
     deleteTransaction({ _id: e.target.dataset.id });
@@ -15,7 +19,7 @@ const History = () => {
   if (isFetching) {
     result = <div>Fetching...</div>;
   } else if (isSuccess) {
-    result = data?.map((item, index) => (
+    result = userRelatedData?.map((item, index) => (
       <Transaction key={index} category={item} handleDelete={handleDelete} />
     ));
   } else if (isError) {

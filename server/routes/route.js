@@ -1,6 +1,9 @@
 // this var lets create different routes inside this file
 const routes = require("express").Router();
 const controller = require("../controller/controller");
+const { User, validate } = require("../models/model");
+const Joi = require("joi");
+const bcrypt = require("bcrypt");
 
 // endpoint categories with get request
 routes

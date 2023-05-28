@@ -5,9 +5,17 @@ import { useForm } from "react-hook-form";
 const Form = () => {
   const { register, handleSubmit, resetField } = useForm();
   const [addTransaction] = api.useAddTransactionMutation();
+
+  const userId = localStorage.getItem("userId");
+
   const onSubmit = async (values) => {
     if (!values) return {};
-    await addTransaction(values).unwrap();
+    const preparedValues = {
+      ...values,
+      userId: userId,
+    };
+    console.log("preparedValues", preparedValues);
+    await addTransaction(preparedValues).unwrap();
     resetField("name");
     resetField("amount");
   };
@@ -43,7 +51,7 @@ const Form = () => {
               className="form-input"></input>
           </div>
           <div className="submit-btn">
-            <button className="border py-2 text-white bg-indigo-500 w-full form-input hover:bg-indigo-400 focus:bg-indigo-600">
+            <button className="border py-2 w-full form-input hover:bg-blue-50 focus:bg-blue-100">
               Make transaction
             </button>
           </div>

@@ -30,13 +30,14 @@ async function getCategories(req, res) {
 // controller to post request: http://localhost:8080/api/transaction - this is an endpoint
 async function createTransaction(req, res) {
   if (!req.body) return res.status(400).json("Pos HTTP data was not provided");
-  let { name, type, amount } = req.body;
-
+  let { name, type, amount, userId } = req.body;
+  console.log("req.body", req.body);
   const create = await new model.Transactions({
     name,
     type,
     amount,
     date: new Date(),
+    userId,
   });
 
   create
@@ -93,6 +94,7 @@ async function getStats(req, res) {
             type: item?.type,
             amount: item?.amount,
             color: item?.categoriesInfo?.color,
+            userId: item?.userId,
           }
         )
       );
