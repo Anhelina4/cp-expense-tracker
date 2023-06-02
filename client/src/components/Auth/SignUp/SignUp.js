@@ -24,7 +24,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = baseURI || "http://localhost:8080/api/users";
+      const url = baseURI;
       const { data: res } = await axios.post(url, data);
 
       localStorage.setItem("userId", res.user._id);
