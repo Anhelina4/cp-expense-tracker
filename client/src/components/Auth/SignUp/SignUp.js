@@ -4,6 +4,8 @@ import axios from "axios";
 import styles from "./styles.module.css";
 import { useState } from "react";
 
+const baseURI = "https://expense-tracker-hsnb.onrender.com/";
+
 const SignUp = () => {
   const [data, setData] = useState({
     firstName: "",
@@ -22,7 +24,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:8080/api/users";
+      const url = baseURI || "http://localhost:8080/api/users";
       const { data: res } = await axios.post(url, data);
 
       localStorage.setItem("userId", res.user._id);
