@@ -4,8 +4,6 @@ const getSum = (transaction, type) => {
   const amountSum = _(transaction)
     .groupBy("type")
     .map((typeArr, key) => {
-      console.log("typeArr", typeArr);
-      console.log("key", key);
       // array with amount forEach category
       if (!type) {
         return _.sumBy(typeArr, "amount");

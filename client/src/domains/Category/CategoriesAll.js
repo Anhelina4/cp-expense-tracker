@@ -6,9 +6,9 @@ import { getStatsPercentage } from "../../helpers";
 
 const CategoriesAll = () => {
   const { data, isFetching, isSuccess, isError } = apiSlice.useGetStatsQuery();
-  console.log("data", data);
+
   const categories = getStatsPercentage(data);
-  console.log("categories", categories);
+
   return (
     <div className="p-12">
       <Typography.Title>Categories</Typography.Title>

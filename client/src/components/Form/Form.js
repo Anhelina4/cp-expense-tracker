@@ -1,3 +1,4 @@
+import { Divider } from "antd";
 import { History } from "../../components";
 import { Icon } from "@qonsoll/icons";
 import React from "react";
@@ -19,7 +20,7 @@ const Form = () => {
       ...values,
       userId: userId,
     };
-    console.log("preparedValues", preparedValues);
+
     await addTransaction(preparedValues).unwrap();
     resetField("name");
     resetField("amount");
@@ -28,9 +29,9 @@ const Form = () => {
   const navigateToCategoriesAll = () => navigate("/categories");
 
   return (
-    <div className="form w-96 ">
+    <div className="form w-96">
       {/* all categories */}
-      <div className="mb-6 flex justify-center items-center">
+      <div className="mb-6 flex justify-between items-center">
         <Typography.Title
           level={3}
           style={{ marginBottom: 0, marginRight: "8px" }}>
@@ -38,14 +39,16 @@ const Form = () => {
         </Typography.Title>
         <Icon name="ArrowLongRightFilled" onClick={navigateToCategoriesAll} />
       </div>
-
+      <Divider />
       {/* form */}
       <form
         className="pr-3"
         id="transaction-form"
         onSubmit={handleSubmit(onSubmit)}>
         {/* title */}
-        <h1 className="font-bold pb-4 text-xl">Transaction</h1>
+        <h1 className="font-bold pb-4 text-xl flex justify-start">
+          Transactions
+        </h1>
         <div className="grid gap-4">
           <div className="input-group">
             <input

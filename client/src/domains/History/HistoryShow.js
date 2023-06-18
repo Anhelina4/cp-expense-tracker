@@ -8,7 +8,7 @@ const HistoryShow = () => {
 
   const { data } = apiSlice.useGetStatsQuery();
   const userRelatedData = data?.filter((item) => item?.userId === userId);
-  console.log("userRelatedData", userRelatedData);
+
   return (
     <div className="p-12">
       <Typography.Title>History</Typography.Title>

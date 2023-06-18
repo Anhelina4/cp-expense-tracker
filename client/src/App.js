@@ -14,7 +14,7 @@ import {
 
 function App() {
   const user = localStorage.getItem("token");
-  console.log("user", user);
+
   return (
     <Router>
       <Routes>

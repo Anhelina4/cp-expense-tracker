@@ -9,7 +9,6 @@ const Stats = () => {
   const { data, isFetching, isSuccess, isError } = apiSlice.useGetStatsQuery();
   const userRelatedData = data?.filter((item) => item?.userId === userId);
 
-  console.log("stats data", userRelatedData);
   let result;
   if (isFetching) {
     result = <div>Fetching...</div>;
