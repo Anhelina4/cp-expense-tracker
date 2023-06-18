@@ -2,6 +2,7 @@ import { Card, Col, Divider, Row, Typography } from "antd";
 
 import { Icon } from "@qonsoll/icons";
 import React from "react";
+import apiSlice from "../../store/apiSlice";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +10,12 @@ const TransactionSimpleView = ({ transaction }) => {
   const navigate = useNavigate();
   const navigateToTransaction = () =>
     navigate(`/transaction/${transaction?._id}`);
+
+  const [deleteTransaction] = apiSlice.useDeleteTransactionMutation();
+
+  const handleDelete = (e) => {
+    deleteTransaction({ _id: transaction?._id });
+  };
 
   return (
     <Card className="shadow-lg">
@@ -26,7 +33,10 @@ const TransactionSimpleView = ({ transaction }) => {
             {transaction?.name}
           </Typography.Title>
         </div>
-        <Icon name="EyeOutlined" onClick={navigateToTransaction} />
+        <div className="flex items-center gap-2">
+          <Icon name="EyeOutlined" onClick={navigateToTransaction} />
+          <Icon name="Trash3Outlined" onClick={handleDelete} />
+        </div>
       </div>
 
       <Divider />
