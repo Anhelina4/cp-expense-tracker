@@ -4,7 +4,7 @@ import axios from "axios";
 import styles from "./styles.module.css";
 import { useState } from "react";
 
-const baseURI = "https://expense-tracker-hsnb.onrender.com";
+const baseURI = "http://localhost:8080";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
