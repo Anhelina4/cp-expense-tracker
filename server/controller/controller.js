@@ -95,6 +95,7 @@ async function getStats(req, res) {
             amount: item?.amount,
             color: item?.categoriesInfo?.color,
             userId: item?.userId,
+            date: item?.date,
           }
         )
       );
