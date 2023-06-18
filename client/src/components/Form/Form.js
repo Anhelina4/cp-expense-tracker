@@ -1,8 +1,13 @@
 import { History } from "../../components";
+import { Icon } from "@qonsoll/icons";
 import React from "react";
+import { Typography } from "antd";
 import { default as api } from "../../store/apiSlice";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+
 const Form = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit, resetField } = useForm();
   const [addTransaction] = api.useAddTransactionMutation();
 
@@ -20,8 +25,20 @@ const Form = () => {
     resetField("amount");
   };
 
+  const navigateToCategoriesAll = () => navigate("/categories");
+
   return (
     <div className="form w-96 ">
+      {/* all categories */}
+      <div className="mb-6 flex justify-center items-center">
+        <Typography.Title
+          level={3}
+          style={{ marginBottom: 0, marginRight: "8px" }}>
+          All categories
+        </Typography.Title>
+        <Icon name="ArrowLongRightFilled" onClick={navigateToCategoriesAll} />
+      </div>
+
       {/* form */}
       <form
         className="pr-3"

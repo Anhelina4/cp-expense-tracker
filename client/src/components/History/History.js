@@ -37,7 +37,7 @@ const History = () => {
         <h1 className="py-4 text-empty font-bold text-xl">History</h1>
         <Icon name="ArrowLongRightFilled" onClick={navigateToHistoryShow} />
       </div>
-      <div className="h-96 overflow-y-scroll flex flex-col gap-3 pr-3">
+      <div className="h-64 overflow-y-scroll flex flex-col gap-3 pr-3">
         {result}
       </div>
     </div>

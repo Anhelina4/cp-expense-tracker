@@ -1,4 +1,9 @@
-import { HistoryShow, TransactionShow } from "./domains";
+import {
+  CategoriesAll,
+  CategoryShow,
+  HistoryShow,
+  TransactionShow,
+} from "./domains";
 import { Login, Main, SignUp } from "./components/Auth";
 import {
   Navigate,
@@ -13,18 +18,22 @@ function App() {
   return (
     <Router>
       <Routes>
-        {user && <Route path="/" exact element={<Main />}></Route>}
-        <Route path="/signup" exact element={<SignUp />}></Route>
-        <Route path="/login" exact element={<Login />}></Route>
+        {user && <Route path="/" exact element={<Main />} />}
+        <Route path="/signup" exact element={<SignUp />} />
+        <Route path="/login" exact element={<Login />} />
         <Route
           path="/transaction/:transactionId"
           exact
-          element={<TransactionShow />}></Route>
-        <Route path="/history" exact element={<HistoryShow />}></Route>
+          element={<TransactionShow />}
+        />
+        <Route path="/history" exact element={<HistoryShow />} />
+        <Route path="/categories" exact element={<CategoriesAll />} />
         <Route
-          path="/"
+          path="/categories/:categoryId"
           exact
-          element={<Navigate replace to="/login" />}></Route>
+          element={<CategoryShow />}
+        />
+        <Route path="/" exact element={<Navigate replace to="/login" />} />
       </Routes>
     </Router>
   );
