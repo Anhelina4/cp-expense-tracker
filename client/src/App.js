@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        {user && <Route path="/" exact element={<Main />} />}
+        {user && <Route path="/main" exact element={<Main />} />}
         <Route path="/signup" exact element={<SignUp />} />
         <Route path="/login" exact element={<Login />} />
         <Route

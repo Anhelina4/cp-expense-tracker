@@ -4,7 +4,7 @@ import axios from "axios";
 import styles from "./styles.module.css";
 import { useState } from "react";
 
-const baseURI = "http://localhost:8080";
+const baseURI = "http://localhost:8080/api/users";
 
 const SignUp = () => {
   const [data, setData] = useState({
