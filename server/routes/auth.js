@@ -4,8 +4,11 @@ const bcrypt = require("bcrypt");
 const Joi = require("joi");
 
 router.post("/", async (req, res) => {
+  console.log("req", req)
+  console.log("res", res)
   try {
     const { error } = validate(req.body);
+    console.log("error", error)
     if (error)
       return res.status(400).send({ message: error.details[0].message });
 
@@ -24,7 +27,7 @@ router.post("/", async (req, res) => {
     res
       .status(200)
       .send({ data: token, message: "logged in successfully", user: user });
-
+      console.log("error", error)
     return user;
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error" });
